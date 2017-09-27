@@ -4,7 +4,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,8 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvStories;
     private MyAdapter mAdapter;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
@@ -34,20 +34,24 @@ public class MainActivity extends AppCompatActivity {
         rvStories.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this,DetailActivity.class);
 //               startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,view.findViewById(R.id.ivChallenger),"sharedChallenger").toBundle());
-              startActivity(intent,
-                        ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
-                                Pair.create(view.findViewById(R.id.ivChallenger),"sharedChallenger"),
-                                Pair.create(view.findViewById(R.id.tvTitle),"sharedTitle"),
-                                Pair.create(view.findViewById(R.id.tvContent),"sharedContent")).toBundle());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
+                                          Pair.create(view.findViewById(R.id.ivChallenger),"sharedChallenger"),
+                                          Pair.create(view.findViewById(R.id.tvTitle),"sharedTitle"),
+                                          Pair.create(view.findViewById(R.id.tvContent),"sharedContent")).toBundle());
+                }else{
+                    ActivityTransitionLauncher.with(MainActivity.this).from(view.findViewById(R.id.ivChallenger)).launch(intent);
+                }
             }
         });
 
-        getWindow().setReenterTransition(new Explode());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setReenterTransition(new Explode());
+        }
     }
 
     public ArrayList<Story> getDatas() {
