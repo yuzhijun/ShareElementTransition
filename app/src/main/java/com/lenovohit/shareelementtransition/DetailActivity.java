@@ -12,7 +12,7 @@ import android.transition.ChangeBounds;
 import android.transition.Fade;
 import android.view.View;
 import android.view.Window;
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 import com.kogitune.activity_transition.ActivityTransition;
 
@@ -20,14 +20,14 @@ import com.kogitune.activity_transition.ActivityTransition;
  * Created by yuzhijun on 2017/9/27.
  */
 public class DetailActivity extends AppCompatActivity {
-    private LinearLayout llDetail;
+    private Button btnNext;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
-
-        llDetail = (LinearLayout) findViewById(R.id.llDetail);
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setVisibility(View.VISIBLE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //        getWindow().setEnterTransition(new Slide());//从场景的边缘移入或移出
@@ -45,7 +45,7 @@ public class DetailActivity extends AppCompatActivity {
                     .duration(300).start(savedInstanceState);
         }
 
-        llDetail.setOnClickListener(new View.OnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
