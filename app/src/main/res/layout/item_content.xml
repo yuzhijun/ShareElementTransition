@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/ivChallenger"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/challenger"
+        android:layout_marginLeft="10dp"
+        android:transitionName="@string/sharedChallenger"
+        />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="探险者的故事"
+        android:layout_toRightOf="@id/ivChallenger"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:transitionName="@string/sharedTitle"/>
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我们都有不断突破自己的决心和信心，未来就在自己脚下，用自己的步伐去丈量。"
+        android:layout_below="@id/tvTitle"
+        android:layout_alignLeft="@id/tvTitle"
+        android:textSize="12dp"
+        android:layout_marginTop="20dp"
+        android:transitionName="@string/sharedContent"/>
+</RelativeLayout>

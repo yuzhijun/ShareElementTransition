@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ShareElementTransition</string>
+
+    <string name="sharedChallenger">sharedChallenger</string>
+    <string name="sharedTitle">sharedTitle</string>
+    <string name="sharedContent">sharedContent</string>
+</resources>

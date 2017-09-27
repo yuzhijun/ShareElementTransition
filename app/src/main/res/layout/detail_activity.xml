@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/challenger"
+        android:scaleType="fitXY"
+        android:transitionName="@string/sharedChallenger"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="探险者的故事"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:transitionName="@string/sharedTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我们都有不断突破自己的决心和信心，未来就在自己脚下，用自己的步伐去丈量。"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:transitionName="@string/sharedContent"/>
+</LinearLayout>
