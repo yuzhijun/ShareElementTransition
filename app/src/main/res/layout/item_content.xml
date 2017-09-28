@@ -6,7 +6,7 @@
         android:id="@+id/ivChallenger"
         android:layout_width="120dp"
         android:layout_height="100dp"
-        android:src="@mipmap/challenger"
+        android:src="@mipmap/challenger_small"
         android:layout_marginLeft="10dp"
         android:transitionName="@string/sharedChallenger"
         />
